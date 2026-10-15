@@ -23,59 +23,194 @@
 
 .portrait img{filter:none;mix-blend-mode:normal;object-position:40% 35%}
 
-/* Keep content flexible between desktop, tablet, and narrow phone widths. */
+/* Shared layout and accessible controls. */
+body{-webkit-font-smoothing:antialiased}
+header{gap:24px}
 header nav{flex-wrap:wrap;justify-content:center;align-items:center}
 .brand,.credit{flex-shrink:0}
+.nav-toggle{display:none}
+.hello,.date{color:var(--ink)}
 .info-row{grid-template-columns:minmax(0,1fr) minmax(0,3fr)}
 .info-row>*{min-width:0}
+.info-row p{line-height:1.5}
+.jobs p{font-size:13px;line-height:1.5}
 .tools>div{min-width:0}
 .tools i,.avatar{flex-shrink:0}
 .tools span,.graphics-caption>span:first-child{overflow-wrap:anywhere}
-.graphics-caption{gap:12px}
+.graphics-caption{gap:12px;min-height:52px}
 .section-heading{gap:20px}
 .section-heading>div{min-width:0}
 .count{flex-shrink:0;white-space:nowrap}
+.graphics-heading{flex-wrap:wrap}
 .logo-animation{grid-template-columns:minmax(0,1fr) minmax(0,2fr)}
 .logo-animation>*{min-width:0}
+.hero-cta,.show-more,.video-caption a,.logo-animation a,footer>a{min-height:44px}
+.video-caption a,.logo-animation a,footer>a{display:inline-flex;align-items:center}
+.video-caption a,.logo-animation a{padding:8px 0}
+.show-more{min-width:160px}
+.website-card{display:flex;flex-direction:column}
+.website-caption{display:flex;flex:1;flex-direction:column;align-items:flex-start}
+.website-caption>span{margin-top:auto;display:inline-flex;align-items:center;min-height:44px}
+.website-caption p{line-height:1.5;margin-bottom:12px}
+
 @media(max-width:1100px){
-  header{gap:22px}
-  header nav{gap:12px 18px;max-width:65%}
-  .credit{display:none}
-  .tools{grid-template-columns:repeat(2,minmax(0,1fr))}
-}
-@media(min-width:601px) and (max-width:900px){
-  .hero{min-height:650px}
-  .intro{padding-right:6%}
-  .hero-roles{font-size:clamp(22px,3.5vw,32px)}
-  .resume{grid-template-columns:70px minmax(0,1fr)}
-  aside>span{font-size:36px}
-  aside small{font-size:12px}
-  .resume-content{padding-left:18px}
-  .info-row{grid-template-columns:minmax(0,1fr) minmax(0,2fr)}
-  .section-heading h2{font-size:clamp(36px,6vw,54px);letter-spacing:-2px}
-  .website-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .logo-animation{grid-template-columns:minmax(0,1fr)}
-}
-@media(max-width:600px){
-  header{position:relative;height:auto;padding:20px 6% 12px;flex-wrap:wrap;gap:16px}
-  header nav{display:flex;max-width:none;width:100%;justify-content:flex-start;gap:4px 16px;font-size:12px}
+  header{position:relative;height:auto;padding:24px 5%;align-items:center}
+  header nav{gap:6px 18px;max-width:66%;font-size:12px}
   header nav a{display:inline-flex;align-items:center;min-height:44px}
   header nav .contact-link{padding-bottom:0}
-  .hero{padding-top:30px}
-  .portrait{width:min(100%,380px);height:auto;aspect-ratio:1/1.08}
-  .section-heading{flex-wrap:wrap;align-items:flex-start;gap:14px}
-  .section-heading h2{font-size:clamp(30px,8vw,44px)}
-  .graphics .section-heading h2,.client-videos .section-heading h2,
-  .other-outputs .section-heading h2,.published-websites .section-heading h2{font-size:clamp(30px,8vw,44px)}
-  .logo-animation{grid-template-columns:minmax(0,1fr)}
-  .contact>a{max-width:100%;gap:20px;overflow-wrap:anywhere}
-  .contact>a span{flex-shrink:0}
+  .credit{display:none}
+  .hero{height:auto;min-height:560px;padding:24px 5% 0;gap:24px;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr)}
+  .portrait{width:100%;height:auto;aspect-ratio:4/5;margin:0;max-height:570px}
+  .intro{min-width:0;padding:25px 0 60px}
+  h1{font-size:clamp(48px,6.5vw,72px);letter-spacing:-3px}
+  .hero-roles{font-size:clamp(25px,3.2vw,36px);gap:12px}
+  .intro-note p{font-size:13px;line-height:1.5}
+  .lime{top:-530px;left:-470px}
+  .violet{left:-730px;top:-70px}
+  .tools{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
-@media(max-width:380px){
-  .resume{grid-template-columns:36px minmax(0,1fr)}
-  .resume-content{padding-left:8px}
-  .about-panel,.experience-panel{padding:24px 16px}
+
+@media(min-width:601px) and (max-width:1000px){
+  .resume{grid-template-columns:64px minmax(0,1fr)}
+  aside>span{font-size:34px}
+  aside small{font-size:11px;letter-spacing:.5px}
+  .resume-content{padding:22px 0 22px 20px}
+  .about-panel,.experience-panel{padding:32px;border-radius:30px 0 0 30px}
+  .info-row{grid-template-columns:minmax(0,1fr) minmax(0,2.4fr);gap:24px}
+  .info-row h2{font-size:26px;line-height:1.1}
+  .info-row p{font-size:15px}
+  .jobs{gap:24px}
+  .jobs h3{font-size:20px}
+  .jobs p{font-size:13px}
+  .tools span{font-size:14px}
+  .education{margin-top:32px}
+  .software{margin-top:32px}
+}
+
+@media(min-width:601px) and (max-width:900px){
+  .hero{min-height:510px;gap:22px}
+  .intro{padding-top:15px}
+  h1{font-size:clamp(44px,6.2vw,56px)}
+  .hello{font-size:28px}
+  .hero-roles{font-size:clamp(22px,3.15vw,28px);letter-spacing:-.8px}
+  .intro-note{gap:10px;margin-top:24px}
+  .intro-note p{font-size:12px}
+  .intro-note p br{display:none}
+  .avatar{width:40px;height:40px;font-size:28px}
+  .portrait-label{left:16px;bottom:22px;font-size:9px}
+  .selected,.client-videos,.published-websites,.other-outputs{padding:64px 5%}
+  .section-heading h2,.graphics .section-heading h2,.client-videos .section-heading h2,.other-outputs .section-heading h2,.published-websites .section-heading h2{font-size:clamp(36px,5.5vw,50px);letter-spacing:-2px}
+  .website-grid,.video-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+  .website-caption{padding:22px}
+  .website-caption h3{font-size:20px}
+  .logo-animation{grid-template-columns:minmax(0,1fr)}
+  .logo-animation h3{margin:12px 0}
+  .contact h2{font-size:clamp(52px,8vw,72px);letter-spacing:-3px}
+  .connect-links{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+}
+
+/* Compact navigation remains visible if JavaScript is unavailable. */
+@media(max-width:760px){
+  header{padding:18px 6%;flex-wrap:wrap;gap:16px}
+  header .brand{font-size:12px;line-height:1.2}
+  header nav{display:flex;width:100%;max-width:none;justify-content:flex-start;gap:4px 18px;font-size:13px}
+  header.nav-ready{flex-wrap:nowrap}
+  header.nav-ready .nav-toggle{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:44px;min-width:98px;padding:10px 15px;margin-left:auto;border:1px solid #dedede;border-radius:30px;background:#fff;color:var(--ink);font-size:13px;font-weight:700;cursor:pointer}
+  .menu-icon{position:relative;width:16px;height:12px;border-top:2px solid currentColor;border-bottom:2px solid currentColor}
+  .menu-icon::after{content:'';position:absolute;left:0;right:0;top:4px;border-top:2px solid currentColor}
+  header.nav-ready .nav-toggle[aria-expanded="true"]{background:var(--ink);color:#fff}
+  header.nav-ready nav{display:none;position:absolute;left:6%;right:6%;top:calc(100% - 4px);width:auto;padding:14px;gap:6px;background:#fff;border:1px solid #e8e8e8;border-radius:20px;box-shadow:0 16px 40px #1010101a;z-index:5}
+  header.nav-ready .nav-toggle[aria-expanded="true"]+nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  header.nav-ready nav a{min-height:48px;padding:10px 12px;border-radius:10px}
+  header.nav-ready nav a:hover,header.nav-ready nav a:focus-visible{background:#f2f2f2}
+  header.nav-ready nav .contact-link{background:var(--lime);border:0;padding-bottom:10px}
+  .info-row{display:block}
+  .info-row h2{margin-bottom:20px}
+}
+
+@media(max-width:600px){
+  .hero{display:flex;flex-direction:column;min-height:0;height:auto;padding:26px 6% 0;gap:0}
+  .intro{order:0;width:100%;padding:0}
+  .hello{font-size:25px;box-shadow:none;margin-bottom:18px;padding:3px 10px}
+  h1{font-size:clamp(46px,12vw,68px);line-height:1.12;letter-spacing:-2.5px}
+  .purple-highlight{border-radius:12px}
+  .hero-roles{font-size:clamp(23px,6.5vw,34px);line-height:1.2;gap:10px;margin-top:24px;letter-spacing:-.8px}
+  .hero-roles .green-highlight{padding:5px 9px;border-radius:10px}
+  .intro-note{margin-top:24px;gap:12px}
+  .intro-note p{font-size:13px;line-height:1.5;margin:0}
+  .intro-note p br{display:none}
+  .avatar{width:40px;height:40px;font-size:29px}
+  .hero-cta{margin-top:18px;font-size:13px;gap:40px}
+  .portrait{order:1;align-self:center;width:min(100%,360px);height:auto;max-height:none;aspect-ratio:1/1.05;margin:32px auto 0;border-radius:46% 46% 0 0}
+  .portrait-label{left:20px;bottom:24px;font-size:9px;line-height:1.5}
+  .lime{top:auto;bottom:-190px;left:auto;right:-190px;width:600px;height:600px;border-width:45px}
+  .violet{display:none}
+  .edition{display:none}
+  .resume{grid-template-columns:minmax(0,1fr);border-radius:28px 28px 0 0}
+  aside{writing-mode:horizontal-tb;transform:none;align-items:flex-start;flex-direction:column;gap:8px;padding:26px 6%;border-radius:0}
+  aside>span{font-size:30px;letter-spacing:-1px;line-height:1.1}
+  aside small{font-size:10px;letter-spacing:1.2px;line-height:1.5}
+  .resume-content{padding:18px 6% 24px;min-width:0}
+  .about-panel,.experience-panel{padding:26px 22px;border-radius:22px}
+  .experience-panel{margin-top:16px}
+  .info-row h2{font-size:25px;line-height:1.15;margin:0 0 18px}
+  .info-row h2 br{display:none}
+  .info-row p{font-size:14px;line-height:1.6}
+  .education{margin-top:28px}
+  .education-items{grid-template-columns:minmax(0,1fr);gap:0}
+  .date{font-size:12px;margin:10px 0 0;padding:2px 8px}
+  .jobs{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 16px}
+  .jobs h3{font-size:18px;letter-spacing:-.4px;line-height:1.2}
+  .jobs p{font-size:12px;margin-top:6px;line-height:1.5}
+  .software{margin-top:30px}
+  .tools{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 14px}
+  .tools>div{align-items:flex-start;gap:8px}
+  .tools i{width:30px;height:30px;font-size:22px}
+  .tools span{font-size:12px;line-height:1.4;padding-bottom:5px;align-self:center}
+  .panel-orbit{width:260px;height:260px;right:-200px;bottom:-200px;border-width:40px}
+  .selected,.client-videos,.published-websites,.other-outputs{padding:48px 6%}
+  .section-heading{flex-direction:column;align-items:flex-start;gap:16px;margin-bottom:28px}
+  .section-heading h2,.graphics .section-heading h2,.client-videos .section-heading h2,.other-outputs .section-heading h2,.published-websites .section-heading h2{font-size:clamp(32px,8.5vw,46px);line-height:1.16;letter-spacing:-1.5px}
+  .section-heading em{padding:0 6px;border-radius:8px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+  .eyebrow{font-size:10px;letter-spacing:1.3px;line-height:1.5}
+  .count{font-size:10px;letter-spacing:1px;line-height:1.4}
+  .graphics-group{margin-top:32px}
+  .graphics-heading{align-items:center;gap:10px;margin-bottom:20px;padding-bottom:14px}
+  .graphics-heading h3{font-size:22px;line-height:1.25}
+  .graphics-heading>span{font-size:9px}
+  .graphics-grid,.video-grid,.website-grid,.other-grid{grid-template-columns:minmax(0,1fr);gap:24px}
+  .graphics-image{border-radius:18px;padding:8px}
+  .graphics-caption{font-size:13px;line-height:1.4;padding:12px 2px}
+  .video-card,.website-card,.other-card{border-radius:18px}
+  .video-caption{padding:18px 20px;gap:8px}
+  .video-caption h3{font-size:20px;line-height:1.3}
+  .video-caption a{font-size:13px}
+  .website-caption{padding:20px 22px 16px}
+  .website-caption h3{font-size:22px;line-height:1.25;margin-bottom:8px}
+  .website-caption p{font-size:12px}
+  .website-caption>span{font-size:13px}
+  .logo-animation{grid-template-columns:minmax(0,1fr);padding:22px;gap:22px;border-radius:18px}
+  .logo-animation h3{font-size:30px;margin:10px 0}
+  .other-card h3{font-size:22px;line-height:1.3;margin:18px 22px}
+  .other-card .other-top{padding:20px 22px 0}
+  .other-card .watch-link{min-height:50px;padding:0 22px 18px;font-size:13px}
+  .contact{padding:42px 6% 0;border-radius:28px 28px 0 0}
+  .contact h2{font-size:clamp(40px,11.5vw,66px);line-height:1.06;letter-spacing:-2px;margin:22px 0 28px}
+  .contact>a{max-width:100%;min-height:54px;justify-content:space-between;gap:24px;padding:14px 20px;font-size:11px;overflow-wrap:anywhere}
+  .contact>a span{flex-shrink:0}
+  .connect-links{grid-template-columns:minmax(0,1fr);gap:0;margin-top:30px}
+  .connect-links a{padding:20px 0;font-size:14px;gap:8px;line-height:1.5}
+  footer{margin-top:26px;padding:16px 0;gap:15px}
+  footer .brand{font-size:14px}
+  footer>a:last-child{font-size:10px}
+  dialog{padding:28px 22px;max-height:calc(100dvh - 32px);overflow-y:auto}
+}
+
+@media(max-width:360px){
+  .about-panel,.experience-panel{padding:24px 18px}
   .jobs,.tools{grid-template-columns:minmax(0,1fr)}
-  .graphics-heading{flex-wrap:wrap}
-  .portrait-label{left:15px;bottom:20px;font-size:9px}
+  .tools span{font-size:14px}
+  .hero-roles{font-size:23px}
+  .intro-note p{font-size:12px}
+  .graphics-heading h3{font-size:20px}
 }
