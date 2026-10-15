@@ -29,24 +29,33 @@ document.addEventListener('click', event => {
 compactNavigation.addEventListener('change', () => setMenuOpen(false));
 header.classList.add('nav-ready');
 
+const compactOutputs = window.matchMedia('(max-width: 600px)');
+
 document.querySelectorAll('.graphics-grid, .video-grid, .other-grid, .website-grid').forEach((grid, index) => {
   const items = Array.from(grid.children);
   if (items.length <= 3) return;
-  const extraItems = items.slice(3);
-  extraItems.forEach(item => { item.hidden = true; });
+  let expanded = false;
   grid.id = grid.id || 'portfolio-category-' + index;
   const button = document.createElement('button');
   button.type = 'button';
   button.className = 'show-more';
-  button.textContent = 'Show More (' + extraItems.length + ')';
-  button.setAttribute('aria-expanded', 'false');
   button.setAttribute('aria-controls', grid.id);
   grid.after(button);
+
+  function updatePreviews() {
+    const previewCount = compactOutputs.matches ? 4 : 3;
+    const extraItems = items.slice(previewCount);
+    if (!expanded && extraItems.some(item => item.contains(document.activeElement))) button.focus();
+    items.forEach((item, itemIndex) => { item.hidden = !expanded && itemIndex >= previewCount; });
+    button.hidden = extraItems.length === 0;
+    button.setAttribute('aria-expanded', String(expanded));
+    button.textContent = expanded ? 'Show Less' : 'Show More (' + extraItems.length + ')';
+  }
+
   button.addEventListener('click', () => {
-    const expanded = button.getAttribute('aria-expanded') === 'true';
-    if (expanded && extraItems.some(item => item.contains(document.activeElement))) button.focus();
-    extraItems.forEach(item => { item.hidden = expanded; });
-    button.setAttribute('aria-expanded', String(!expanded));
-    button.textContent = expanded ? 'Show More (' + extraItems.length + ')' : 'Show Less';
+    expanded = !expanded;
+    updatePreviews();
   });
+  compactOutputs.addEventListener('change', updatePreviews);
+  updatePreviews();
 });
